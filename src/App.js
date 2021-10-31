@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import RepositoryDetails from './components/RepositoryDetails';
 import SelectRepository from './components/SelectRepository';

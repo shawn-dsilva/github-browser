@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 
 function ListRepos() {
@@ -8,11 +8,11 @@ function ListRepos() {
   const [repos, setRepos] = useState([]);
  
 
-    const INITIAL_REPOS = [
-        {"owner":"facebook", "repo":"react"},
-        {"owner":"reduxjs", "repo":"redux"},
-        {"owner":"microsoft", "repo":"TypeScript"}
-    ]
+  const INITIAL_REPOS = useMemo(() => [
+      {"owner":"facebook", "repo":"react"},
+      {"owner":"reduxjs", "repo":"redux"},
+      {"owner":"microsoft", "repo":"TypeScript"}
+  ],[]) 
 
   useEffect(() => {
     const fetchData = () => {
@@ -31,13 +31,13 @@ function ListRepos() {
       setLoading(false);
     };
     fetchData()
-  }, []);
+  }, [INITIAL_REPOS]);
 
   const makeList = () => {
 
-    let repoList = repos.map( (repo) => {
+    let repoList = repos.map( (repo, index) => {
         return (
-        <div className='repo-item'>
+        <div key={index} className='repo-item' onClick={() => clickHandler(repo.name)}>
             <strong>{repo.name}</strong>
             <p>{repo.description}</p>
         </div>
@@ -49,6 +49,9 @@ function ListRepos() {
     return repoList
   }
 
+  const clickHandler = (repoName) => {
+    console.log(repoName);
+  }
 
     return (
         <div className='repo-list'>
