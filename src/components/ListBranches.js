@@ -1,5 +1,6 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
+import CommitsModal from './CommitsModal';
 
 function ListBranches({selectedRepo}) {
 
@@ -29,11 +30,13 @@ function ListBranches({selectedRepo}) {
   const makeList = () => {
 
     let repoList = branches.map( (branch, index) => {
-        return (
-        <div key={index} className='branch-item' onClick={() => clickHandler(branch)}>
-            <strong>{branch.name}</strong>
-        </div>
-        )
+        // return (
+        // <div key={index} className='branch-item' onClick={() => clickHandler(branch)}>
+        //     <strong>{branch.name}</strong>
+        // </div>
+        // )
+
+        return <CommitsModal branch={branch} selectedRepo={selectedRepo}/>
     });
 
     console.log(repoList)
