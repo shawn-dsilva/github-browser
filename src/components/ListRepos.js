@@ -1,7 +1,7 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 
-function ListRepos() {
+function ListRepos({setSelectedRepo}) {
 
   const [isLoading, setLoading] = useState(false)
   const [isError, setError] = useState(false)
@@ -22,7 +22,7 @@ function ListRepos() {
       INITIAL_REPOS.forEach( async (object) => {
         try {
             const response = await axios(`https://api.github.com/repos/${object.owner}/${object.repo}`);
-            const newRepo = {"name": response.data.name, "description": response.data.description}
+            const newRepo = {"name": response.data.name, "description": response.data.description, "owner": response.data.owner.login, "fullName": response.data.full_name}
             setRepos(currRepos => [...currRepos, newRepo]);
           } catch (error) {
             setError(true);
@@ -37,7 +37,7 @@ function ListRepos() {
 
     let repoList = repos.map( (repo, index) => {
         return (
-        <div key={index} className='repo-item' onClick={() => clickHandler(repo.name)}>
+        <div key={index} className='repo-item' onClick={() => clickHandler(repo)}>
             <strong>{repo.name}</strong>
             <p>{repo.description}</p>
         </div>
@@ -49,8 +49,9 @@ function ListRepos() {
     return repoList
   }
 
-  const clickHandler = (repoName) => {
-    console.log(repoName);
+  const clickHandler = (repo) => {
+    console.log(repo.name);
+    setSelectedRepo(repo)
   }
 
     return (
