@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ListBranches from './ListBranches';
+import ListIssues from './ListIssues';
 
 function RepositoryDetails({selectedRepo}) {
 
@@ -19,7 +20,7 @@ function RepositoryDetails({selectedRepo}) {
                 onClick={() => setActiveTab('issues')}><i class="far fa-dot-circle"></i> ISSUES</div>
             </div>
             <div className='details-list'>
-                {activeTab === 'branches' ? <ListBranches selectedRepo={selectedRepo}/> : null}
+                {activeTab === 'branches' ? <ListBranches selectedRepo={selectedRepo}/> : <ListIssues selectedRepo={selectedRepo}/>}
             </div>
         </div>
     )

@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div className='mainbar'>GitHub Browser</div>
       <div className='main-flex-container'>
-      <SelectRepository setSelectedRepo={setSelectedRepo}/>
+      <SelectRepository selectedRepo={selectedRepo} setSelectedRepo={setSelectedRepo}/>
       <RepositoryDetails selectedRepo={selectedRepo}/>
       </div>
     </div>

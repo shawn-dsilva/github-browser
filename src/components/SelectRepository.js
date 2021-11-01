@@ -1,10 +1,10 @@
 import React from 'react'
 import ListRepos from './ListRepos'
 
-function SelectRepository({setSelectedRepo}) {
+function SelectRepository({selectedRepo,setSelectedRepo}) {
     return (
         <div className='select-repo'>
-            <ListRepos setSelectedRepo={setSelectedRepo}/>
+            <ListRepos selectedRepo={selectedRepo} setSelectedRepo={setSelectedRepo}/>
             <div className='add-repo-container'>
                 <button className='add-repo-button'> + </button>
             </div>

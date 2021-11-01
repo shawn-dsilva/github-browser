@@ -1,7 +1,7 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 
-function ListRepos({setSelectedRepo}) {
+function ListRepos({selectedRepo, setSelectedRepo}) {
 
   const [isLoading, setLoading] = useState(false)
   const [isError, setError] = useState(false)
@@ -36,21 +36,20 @@ function ListRepos({setSelectedRepo}) {
   const makeList = () => {
 
     let repoList = repos.map( (repo, index) => {
+        const className = selectedRepo?.name === repo.name ? 'repo-item repo-item-active': 'repo-item';
+        console.log(selectedRepo)
         return (
-        <div key={index} className='repo-item' onClick={() => clickHandler(repo)}>
+        <div key={index} className={className} onClick={() => clickHandler(repo)}>
             <strong>{repo.name}</strong>
             <p>{repo.description}</p>
         </div>
         )
     });
 
-    console.log(repoList)
-
     return repoList
   }
 
   const clickHandler = (repo) => {
-    console.log(repo.name);
     setSelectedRepo(repo)
   }
 
