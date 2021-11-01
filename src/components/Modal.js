@@ -1,13 +1,13 @@
 import React from "react";
 
-const Modal = ({ onClose, show, children, header }) => {
+const Modal = ({ onClose, show, children, header, pre }) => {
   const toggle = show ? {display:"flex"} : {display:"none"};
 
   return (
     <div className="modal-container" style={toggle}>
       <div className="modal">
         <div className="modal-header">
-          <span><strong>COMMITS</strong> : {header} </span>
+          <span><strong>{pre}</strong> {header} </span>
           <button  className="modal-close" onClick={onClose}>
             <i class="fas fa-times"></i>          
           </button>

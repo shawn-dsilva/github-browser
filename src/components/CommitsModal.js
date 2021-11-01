@@ -62,7 +62,7 @@ function CommitsModal({branch, selectedRepo}) {
         <div  className="branch-item" onClick={e => modalToggler(e)} >
             <strong>{branch.name}</strong>
         </div> 
-        <Modal header={branch.name} show={modalToggle} onClose={e => modalToggler(e)}>
+        <Modal pre="COMMITS :" header={branch.name} show={modalToggle} onClose={e => modalToggler(e)}>
             {isError && <div>Something went wrong ...</div>}
                  {isLoading ? (
                     <div>Loading ...</div>
