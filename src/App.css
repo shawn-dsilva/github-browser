@@ -52,6 +52,7 @@ html, body {
   height: 100vh;
   width: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 .select-repo {
@@ -129,13 +130,11 @@ html, body {
   background-color: #e4e4e4;
 }
 
-.details-display {
-  height: 95%;
+.details-tabs-container {
   width: 100%;
   background-color: white;
   display: flex;
   flex-direction: row;
-  border:1px solid #282c34;
 }
 
 .details-tabs {
@@ -147,7 +146,7 @@ html, body {
   border-width: 3px 3px 3px 0px;
   padding: 1rem;
   cursor: pointer;
-  background-color: rgba(0,0,0,0.1);
+  background-color: whitesmoke;
 }
 
 .details-tabs-active {
@@ -188,4 +187,31 @@ html, body {
 .details-header button:hover {
   background-color: rgb(202, 15, 15);
   border-color: rgb(202, 15, 15);
+}
+
+.details-list {
+  height: 90%;
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+.branch-item {
+  border-bottom:2px solid lightgray;
+  padding: 1rem;
+  text-align: left;
+  cursor:pointer;
+}
+
+.branch-item strong {
+  font-size: 1.2rem;
+}
+
+.branch-item p {
+  margin: 0.5rem 0;
+  color: slategray;
+}
+
+.branch-item:hover {
+  background-color: #e4e4e4;
 }

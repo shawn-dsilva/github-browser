@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ListBranches from './ListBranches';
 
 function RepositoryDetails({selectedRepo}) {
 
@@ -10,12 +11,15 @@ function RepositoryDetails({selectedRepo}) {
             <h1>{selectedRepo.fullName}</h1>
             <button>DELETE</button>
             </div>
-            <div className="details-display">
+            <div className="details-tabs-container">
                 <div className={ activeTab === 'branches' ? 'details-tabs-active':'details-tabs'}                       
                 onClick={() => setActiveTab('branches')}><i class="fas fa-code-branch"></i> BRANCHES</div>
 
                 <div className={ activeTab === 'issues' ? 'details-tabs-active':'details-tabs'}
                 onClick={() => setActiveTab('issues')}><i class="far fa-dot-circle"></i> ISSUES</div>
+            </div>
+            <div className='details-list'>
+                {activeTab === 'branches' ? <ListBranches selectedRepo={selectedRepo}/> : null}
             </div>
         </div>
     )
