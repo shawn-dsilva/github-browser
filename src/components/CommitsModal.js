@@ -39,10 +39,17 @@ function CommitsModal({branch, selectedRepo}) {
             <div key={index} className='issue-item' >
                 <strong>{date}</strong>
                 <p>{commit.commit.message}</p>
-                <div style={{display:'flex'}}>
-            <img src={commit?.committer.avatar_url} alt="avatar"></img>
-            <p>{commit?.committer.login}</p>
-            </div>
+                {
+                    commit.committer !== null ?
+                    <div style={{display:'flex'}}>
+                    <img src={commit.committer.avatar_url} alt="avatar"></img>
+                    <p>{commit?.committer.login}</p>
+                    </div> : ( <div style={{display:'flex'}}>
+                    <img src="https://avatars.githubusercontent.com/u/583231?v=4" alt="avatar"></img>
+                    <p>{commit.commit.author.name}</p>
+                    </div> )
+                }
+               
             </div>
             )
         });    
