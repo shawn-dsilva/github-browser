@@ -289,3 +289,44 @@ html, body {
 .modal-close i:hover {
   color:whitesmoke!important;
 }
+
+.small {
+  width: 30%!important;
+  height: 60%!important;
+}
+
+.modal input {
+  padding:1rem;
+  font-size: 1.5rem;
+}
+
+.modal label {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.modal-main {
+  display: flex;
+  flex-direction: column;
+  margin:auto 5rem;
+}
+
+
+.modal-submit {
+  height: fit-content!important;
+  width: auto!important;
+  border: none!important;
+  font-size: 2rem!important;
+  font-weight: 700;
+  margin:2rem auto!important;
+  background-color: #61dafb;
+  color:white!important;
+  padding:1rem 5rem!important;
+  cursor: pointer;
+}
+
+.modal-submit:hover {
+  background-color:#08c7fc;
+}

@@ -1,11 +1,11 @@
 import React from "react";
 
-const Modal = ({ onClose, show, children, header, pre }) => {
+const Modal = ({ onClose, show, children, header, pre, size }) => {
   const toggle = show ? {display:"flex"} : {display:"none"};
 
   return (
     <div className="modal-container" style={toggle}>
-      <div className="modal">
+      <div className={"modal "+size}>
         <div className="modal-header">
           <span><strong>{pre}</strong> {header} </span>
           <button  className="modal-close" onClick={onClose}>
