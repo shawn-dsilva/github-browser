@@ -12,7 +12,8 @@ function RepositoryDetails({selectedRepo, setRepos, repos, setSelectedRepo}) {
     }
     return (
         <div className="repo-details">
-            <div className='details-header'>
+            {Object.keys(selectedRepo).length === 0 ? <div className='nothing-selected'>Select A Repo From The Left to Get Started</div> :
+            <><div className='details-header'>
             <h1>{selectedRepo.fullName}</h1>
             <button onClick={() => handleDelete()}>DELETE</button>
             </div>
@@ -26,6 +27,8 @@ function RepositoryDetails({selectedRepo, setRepos, repos, setSelectedRepo}) {
             <div className='details-list'>
                 {activeTab === 'branches' ? <ListBranches selectedRepo={selectedRepo}/> : <ListIssues selectedRepo={selectedRepo}/>}
             </div>
+            </>
+            }
         </div>
     )
 }

@@ -1,11 +1,13 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
+import ErrorMessage from './ErrorMessage';
 
 function ListIssues({selectedRepo}) {
 
-  const [isLoading, setLoading] = useState(false)
-  const [isError, setError] = useState(false)
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [issues, setIssues] = useState([]);
  
 
@@ -21,8 +23,11 @@ function ListIssues({selectedRepo}) {
             })
           } catch (error) {
             setError(true);
+            setErrorMsg(error.toString());
+
           }
       setLoading(false);
+      
     };
     fetchData()
   }, [selectedRepo]);
@@ -49,7 +54,7 @@ function ListIssues({selectedRepo}) {
 
     return (
         <div className='details-list'>
-             {isError && <div>Something went wrong ...</div>}
+             {isError && <ErrorMessage errMsg={errorMsg}/>}
  
  {isLoading ? (
    <LoadingSpinner/>

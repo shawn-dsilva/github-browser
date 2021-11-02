@@ -2,12 +2,14 @@ import React, { useContext, useRef, useState } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
+import ErrorMessage from './ErrorMessage';
 
 function CommitsModal({branch, selectedRepo}) {
 
     const [modalToggle, setModalToggle] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isError, setError] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
     const [commits, setCommits] = useState([])
 
     const fetchCommits = async () => {
@@ -21,6 +23,8 @@ function CommitsModal({branch, selectedRepo}) {
               })
             } catch (error) {
               setError(true);
+              setErrorMsg(error.toString());
+
             }
         setLoading(false);
     };
@@ -64,7 +68,7 @@ function CommitsModal({branch, selectedRepo}) {
             <strong>{branch.name}</strong>
         </div> 
         <Modal pre="COMMITS :" header={branch.name} show={modalToggle} onClose={e => modalToggler(e)}>
-            {isError && <div>Something went wrong ...</div>}
+            {isError && <ErrorMessage errMsg={errorMsg}/>}
                  {isLoading ? (
                     <LoadingSpinner/>
                 ) : (

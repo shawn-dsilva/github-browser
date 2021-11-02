@@ -48,9 +48,6 @@ function ListBranches({selectedRepo}) {
     return repoList
   }
 
-  const clickHandler = (branch) => {
-    console.log(branch.name);
-  }
 
     return (
         <div className='details-list'>
