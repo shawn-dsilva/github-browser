@@ -1,11 +1,12 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
 
 function ListRepos({selectedRepo, setSelectedRepo, repos, setRepos}) {
 
   const [isLoading, setLoading] = useState(false)
   const [isError, setError] = useState(false)
- 
+  const [errorMsg, setErrorMsg] = useState("");
 
   const INITIAL_REPOS = useMemo(() => [
       {"owner":"facebook", "repo":"react"},
@@ -25,6 +26,7 @@ function ListRepos({selectedRepo, setSelectedRepo, repos, setRepos}) {
             setRepos(currRepos => [...currRepos, newRepo]);
           } catch (error) {
             setError(true);
+            setErrorMsg(error.toString());
           }
       })
       setLoading(false);
@@ -54,7 +56,7 @@ function ListRepos({selectedRepo, setSelectedRepo, repos, setRepos}) {
 
     return (
         <div className='repo-list'>
-             {isError && <div>Something went wrong ...</div>}
+             {isError && <ErrorMessage errMsg={errorMsg}/>}
  
  {isLoading ? (
    <div>Loading ...</div>

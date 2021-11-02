@@ -292,15 +292,18 @@ html, body {
 
 .small {
   width: 30%!important;
-  height: 60%!important;
+  min-height: 60%!important;
+  max-height: 80%;
 }
 
 .modal input {
   padding:1rem;
   font-size: 1.5rem;
+  margin: 0 5rem;
 }
 
 .modal label {
+  margin: 0 5rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 2rem;
@@ -310,7 +313,6 @@ html, body {
 .modal-main {
   display: flex;
   flex-direction: column;
-  margin:auto 5rem;
 }
 
 
@@ -329,4 +331,24 @@ html, body {
 
 .modal-submit:hover {
   background-color:#08c7fc;
+}
+
+.error-container {
+  background-color: rgba(252, 116, 116,0.2);
+  width: 300px;
+  border-radius: 15px;
+  color:rgba(252, 116, 116);
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  padding: 2rem;
+}
+
+.error-container i {
+  font-size: 4rem;
+}
+
+.error-container span {
+  font-size: 2rem;
+  font-weight: 400;
 }

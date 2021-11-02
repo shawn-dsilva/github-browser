@@ -1,13 +1,15 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 import CommitsModal from './CommitsModal';
+import ErrorMessage from './ErrorMessage';
 
 function ListBranches({selectedRepo}) {
 
   const [isLoading, setLoading] = useState(false)
   const [isError, setError] = useState(false)
   const [branches, setBranches] = useState([]);
- 
+  const [errorMsg, setErrorMsg] = useState("");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +23,7 @@ function ListBranches({selectedRepo}) {
             })
           } catch (error) {
             setError(true);
+            setErrorMsg(error.toString());
           }
       setLoading(false);
     };
@@ -50,7 +53,7 @@ function ListBranches({selectedRepo}) {
 
     return (
         <div className='details-list'>
-             {isError && <div>Something went wrong ...</div>}
+             {isError && <ErrorMessage errMsg={errorMsg}/>}
  
  {isLoading ? (
    <div>Loading ...</div>

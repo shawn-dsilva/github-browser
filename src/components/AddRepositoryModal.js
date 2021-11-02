@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Modal from './Modal'
 import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
 
 function AddRepositoryModal({repos,setRepos}) {
 
@@ -63,7 +64,7 @@ function AddRepositoryModal({repos,setRepos}) {
                 <button className="modal-submit" onClick={(e) => handleSubmit(e)}>
                 <i class="far fa-plus-square"></i> ADD
                 </button>
-                { isError ? errorMsg : ""}
+                { isError ? <ErrorMessage errMsg={errorMsg}/> : ""}
         </Modal>
       </>
     );
