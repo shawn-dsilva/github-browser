@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import Modal from './Modal'
+import axios from 'axios';
 
-function AddRepositoryModal() {
+function AddRepositoryModal({repos,setRepos}) {
 
     const [modalToggle, setModalToggle] = useState(false);
     const [isLoading, setLoading] = useState(false);
@@ -9,12 +10,25 @@ function AddRepositoryModal() {
     const [owner, setOwner] = useState("");
     const [repoName, setRepoName] = useState("");
 
+    const fetchRepo = async () => {
+        setError(false);
+        setLoading(true);
+          try {
+              const response = await axios(`https://api.github.com/repos/${owner}/${repoName}`)
+              const newRepo = {"name": response.data.name, "description": response.data.description, "owner": response.data.owner.login, "fullName": response.data.full_name};               
+               setRepos(currRepos => [...currRepos, newRepo]);
+            } catch (error) {
+              setError(true);
+            }
+        setLoading(false);
+    };
+
     const modalToggler = () => {
         setModalToggle(!modalToggle);
     }
 
     const handleSubmit = (event) => {
-
+        fetchRepo();
     }
     return (
       <>
@@ -45,6 +59,7 @@ function AddRepositoryModal() {
                 <button className="modal-submit" onClick={(e) => handleSubmit(e)}>
                 <i class="far fa-plus-square"></i> ADD
                 </button>
+                { isError ? "An Error Has Occured" : ""}
         </Modal>
       </>
     );

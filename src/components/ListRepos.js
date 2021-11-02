@@ -1,11 +1,10 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 
-function ListRepos({selectedRepo, setSelectedRepo}) {
+function ListRepos({selectedRepo, setSelectedRepo, repos, setRepos}) {
 
   const [isLoading, setLoading] = useState(false)
   const [isError, setError] = useState(false)
-  const [repos, setRepos] = useState([]);
  
 
   const INITIAL_REPOS = useMemo(() => [
