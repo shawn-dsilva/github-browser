@@ -13,7 +13,7 @@ function App() {
       <div className='mainbar'>GitHub Browser</div>
       <div className='main-flex-container'>
       <SelectRepository selectedRepo={selectedRepo} setSelectedRepo={setSelectedRepo} repos={repos} setRepos={setRepos}/>
-      <RepositoryDetails selectedRepo={selectedRepo}/>
+      <RepositoryDetails selectedRepo={selectedRepo} setRepos={setRepos} repos={repos} setSelectedRepo={setSelectedRepo}/>
       </div>
     </div>
   );

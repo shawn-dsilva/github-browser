@@ -9,6 +9,7 @@ function AddRepositoryModal({repos,setRepos}) {
     const [isError, setError] = useState(false);
     const [owner, setOwner] = useState("");
     const [repoName, setRepoName] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
 
     const fetchRepo = async () => {
         setError(false);
@@ -19,6 +20,9 @@ function AddRepositoryModal({repos,setRepos}) {
                setRepos(currRepos => [...currRepos, newRepo]);
             } catch (error) {
               setError(true);
+              console.log('Error');
+              console.log(error);
+              setErrorMsg(error.toString());
             }
         setLoading(false);
     };
@@ -59,7 +63,7 @@ function AddRepositoryModal({repos,setRepos}) {
                 <button className="modal-submit" onClick={(e) => handleSubmit(e)}>
                 <i class="far fa-plus-square"></i> ADD
                 </button>
-                { isError ? "An Error Has Occured" : ""}
+                { isError ? errorMsg : ""}
         </Modal>
       </>
     );

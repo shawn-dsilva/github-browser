@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import ListBranches from './ListBranches';
 import ListIssues from './ListIssues';
 
-function RepositoryDetails({selectedRepo}) {
+function RepositoryDetails({selectedRepo, setRepos, repos, setSelectedRepo}) {
 
     const [activeTab, setActiveTab] = useState('branches');
 
+    const handleDelete = () => {
+        setRepos(repos.filter((repo) => repo.name !== selectedRepo.name));
+        setSelectedRepo({});
+    }
     return (
         <div className="repo-details">
             <div className='details-header'>
             <h1>{selectedRepo.fullName}</h1>
-            <button>DELETE</button>
+            <button onClick={() => handleDelete()}>DELETE</button>
             </div>
             <div className="details-tabs-container">
                 <div className={ activeTab === 'branches' ? 'details-tabs-active':'details-tabs'}                       
