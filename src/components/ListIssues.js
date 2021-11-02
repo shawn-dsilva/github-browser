@@ -1,5 +1,6 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
+import LoadingSpinner from './LoadingSpinner';
 
 function ListIssues({selectedRepo}) {
 
@@ -51,7 +52,7 @@ function ListIssues({selectedRepo}) {
              {isError && <div>Something went wrong ...</div>}
  
  {isLoading ? (
-   <div>Loading ...</div>
+   <LoadingSpinner/>
  ) : (
   makeList()
  )}

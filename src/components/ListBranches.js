@@ -2,6 +2,7 @@ import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 import CommitsModal from './CommitsModal';
 import ErrorMessage from './ErrorMessage';
+import LoadingSpinner from './LoadingSpinner';
 
 function ListBranches({selectedRepo}) {
 
@@ -56,8 +57,7 @@ function ListBranches({selectedRepo}) {
              {isError && <ErrorMessage errMsg={errorMsg}/>}
  
  {isLoading ? (
-   <div>Loading ...</div>
- ) : (
+<LoadingSpinner/> ) : (
   makeList()
  )}
         </div>

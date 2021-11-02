@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
+import LoadingSpinner from './LoadingSpinner';
 
 function CommitsModal({branch, selectedRepo}) {
 
@@ -65,7 +66,7 @@ function CommitsModal({branch, selectedRepo}) {
         <Modal pre="COMMITS :" header={branch.name} show={modalToggle} onClose={e => modalToggler(e)}>
             {isError && <div>Something went wrong ...</div>}
                  {isLoading ? (
-                    <div>Loading ...</div>
+                    <LoadingSpinner/>
                 ) : (
                 makeList()
              )}

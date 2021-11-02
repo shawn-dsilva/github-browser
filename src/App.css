@@ -198,6 +198,8 @@ html, body {
   width: 100%;
   background-color: white;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .branch-item, .issue-item {
@@ -351,4 +353,41 @@ html, body {
 .error-container span {
   font-size: 2rem;
   font-weight: 400;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid #282c34;
+  border-color: #282c34 transparent #282c34 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  color: #282c34;
+  margin: auto;
+}
+
+.loading-container span {
+  font-size: 2rem;
+  font-weight: 600;
 }

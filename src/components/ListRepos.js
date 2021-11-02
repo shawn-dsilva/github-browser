@@ -1,6 +1,7 @@
 import React, {useState,useEffect,useMemo} from 'react'
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
+import LoadingSpinner from './LoadingSpinner';
 
 function ListRepos({selectedRepo, setSelectedRepo, repos, setRepos}) {
 
@@ -59,7 +60,7 @@ function ListRepos({selectedRepo, setSelectedRepo, repos, setRepos}) {
              {isError && <ErrorMessage errMsg={errorMsg}/>}
  
  {isLoading ? (
-   <div>Loading ...</div>
+   <LoadingSpinner/>
  ) : (
   makeList()
  )}
